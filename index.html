@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Expense Tracker</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo">
+            💰 FinTrack
+        </div>
+
+        <div class="header-text">
+            Smart Expense & Financial Health Analyzer
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- Dashboard -->
+
+        <section class="dashboard">
+
+            <div class="card income-card">
+
+                <span>Monthly Income</span>
+
+                <h2 id="income">
+                    ₹0
+                </h2>
+
+            </div>
+
+
+            <div class="card expense-card">
+
+                <span>Total Expenses</span>
+
+                <h2 id="expenses">
+                    ₹0
+                </h2>
+
+            </div>
+
+
+            <div class="card balance-card">
+
+                <span>Remaining Balance</span>
+
+                <h2 id="balance">
+                    ₹0
+                </h2>
+
+            </div>
+
+
+            <div class="card saving-card">
+
+                <span>Savings Rate</span>
+
+                <h2 id="savingPercentage">
+                    0%
+                </h2>
+
+            </div>
+
+        </section>
+
+
+        <!-- Input Area -->
+
+        <section class="input-grid">
+
+
+            <!-- Income -->
+
+            <div class="panel">
+
+                <h2>
+                    💵 Add Monthly Income
+                </h2>
+
+                <form id="incomeForm">
+
+                    <label>
+                        Monthly Income
+                    </label>
+
+                    <input
+                        type="number"
+                        id="incomeInput"
+                        placeholder="Enter amount"
+                        min="0"
+                        required
+                    >
+
+                    <button type="submit">
+                        Update Income
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- Expense -->
+
+            <div class="panel">
+
+                <h2>
+                    💳 Add Expense
+                </h2>
+
+                <form id="expenseForm">
+
+                    <label>
+                        Amount
+                    </label>
+
+                    <input
+                        type="number"
+                        id="amount"
+                        placeholder="₹ Enter amount"
+                        min="1"
+                        required
+                    >
+
+
+                    <label>
+                        Category
+                    </label>
+
+                    <select id="category">
+
+                        <option value="Food">
+                            🍔 Food
+                        </option>
+
+                        <option value="Transport">
+                            🚌 Transport
+                        </option>
+
+                        <option value="Education">
+                            📚 Education
+                        </option>
+
+                        <option value="Shopping">
+                            🛍 Shopping
+                        </option>
+
+                        <option value="Bills">
+                            🧾 Bills
+                        </option>
+
+                        <option value="Entertainment">
+                            🎬 Entertainment
+                        </option>
+
+                        <option value="Healthcare">
+                            🏥 Healthcare
+                        </option>
+
+                        <option value="Other">
+                            📦 Other
+                        </option>
+
+                    </select>
+
+
+                    <label>
+                        Description
+                    </label>
+
+                    <input
+                        type="text"
+                        id="description"
+                        placeholder="Example: Lunch"
+                    >
+
+
+                    <button type="submit">
+                        Add Expense
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- Financial Health -->
+
+        <section class="health-section">
+
+            <div class="health-card">
+
+                <h2>
+                    🧠 Financial Health
+                </h2>
+
+                <div id="healthStatus"
+                    class="health-status neutral">
+
+                    Enter your income
+
+                </div>
+
+                <p id="healthMessage">
+                    Add your income and expenses to analyze your financial health.
+                </p>
+
+            </div>
+
+
+            <div class="suggestion-card">
+
+                <h2>
+                    🤖 Smart Financial Suggestions
+                </h2>
+
+                <div id="suggestions">
+
+                    <p>
+                        Add financial data to receive suggestions.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Category Analysis -->
+
+        <section class="panel">
+
+            <h2>
+                📊 Expense Category Analysis
+            </h2>
+
+            <div id="categoryAnalysis"
+                class="category-container">
+
+            </div>
+
+        </section>
+
+
+        <!-- History -->
+
+        <section class="panel">
+
+            <div class="history-header">
+
+                <h2>
+                    📋 Expense History
+                </h2>
+
+                <button
+                    class="reset-button"
+                    onclick="resetData()">
+
+                    Reset Data
+
+                </button>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Category
+                            </th>
+
+                            <th>
+                                Description
+                            </th>
+
+                            <th>
+                                Amount
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="expenseTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        Smart Expense Tracker © 2026
+
+    </footer>
+
+
+    <script
+        src="{{ url_for('static', filename='script.js') }}">
+    </script>
+
+</body>
+
+</html>
